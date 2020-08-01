@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <script src="https://kit.fontawesome.com/0e123e0c8f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="box-login">
+        <div class="box-header"></div>
+
+        <h1>Faça seu login</h1>
+
+        <form method="post" action="/login/check">
+            <input type="email" name="email" placeholder="E-MAIL">
+            <input type="password" name="password" placeholder="SENHA">
+            <button class="btn-login">LOGAR</button>
+            <span class="msg-error"><i class="fa fa-exclamation-triangle"
+                    style="font-size: 16px; color: #ff6d6d; padding-right: 5px;"></i> Tentativa Inválida</span>
+        </form>
+    </div>
+</body>
+
+</html>
