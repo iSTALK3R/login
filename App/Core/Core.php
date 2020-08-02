@@ -6,7 +6,7 @@ class Core
     private $url;
 
     private $controller;
-    private $method;
+    private $method = 'Index';
     private $params = array();
 
     public function __construct()
@@ -16,23 +16,28 @@ class Core
 
     public function Start($request)
     {
-        if ($request['url']) {
+        if (isset($request['url'])) {
 
-            $this->url = explode('/', $request['url']);
+            $this->url = explode('/', $request['url']); // Quebra a url e cria um array cada vez que aparece uma /
 
-            $this->controller = ucfirst($this->url[0]) . 'Controller';
-            array_shift($this->url);
+            $this->controller = ucfirst($this->url[0]) . 'Controller'; // Controller
+            array_shift($this->url); // Limpa o array url e deixa os métodos na posição 0
 
-            $this->method = $this->url[0];
-            array_shift($this->url);
+            if (isset($this->url[0]) && $this->url != "") {
+                $this->method = $this->url[0]; // Métodos
+                array_shift($this->url); // Limpa o array url e deixa os parametros na posição 0
 
-            $this->params = $this->url[0];
+                if (isset($this->url[0]) && $this->url != "") {
+                    $this->params = $this->url; // Parametros adicionais
+                }
+            }
+
         } else {
-            
+            // Caso não houver nenhuma informação na url
             $this->controller = "LoginController";
-            $this->method = "index";
+            $this->method = "Index";
         }
 
-        call_user_func(array(new $this->controller, $this->method), $this->params);
+        return call_user_func(array(new $this->controller, $this->method), $this->params); // Responsável por carregar a controller, method e params
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 require_once 'App/Core/Core.php';
+require_once 'App/Controller/LoginController.php';
+require_once 'vendor/autoload.php';
 
 $core = new Core();
-$core->Start($_GET);
+echo $core->Start($_GET);
