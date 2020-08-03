@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
-    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="http://localhost:81/loginSys/Assets/css/styleLogin.css">
     <script src="https://kit.fontawesome.com/0e123e0c8f.js" crossorigin="anonymous"></script>
 </head>
 
@@ -20,10 +20,15 @@
             <input type="email" name="email" placeholder="E-MAIL">
             <input type="password" name="password" placeholder="SENHA">
             <button class="btn-login">LOGAR</button>
+
+            {% if error != '' %}
+
             <span class="msg-error"><i class="fa fa-exclamation-triangle"
                     style="font-size: 16px; color: #ff6d6d; padding-right: 5px;"></i>
                 <p>Tentativa Inválida</p>
             </span>
+
+            {% endif %}
         </form>
     </div>
 </body>
